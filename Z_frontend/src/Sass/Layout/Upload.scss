@@ -1,0 +1,22 @@
+.Upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    border: 2px dashed #aaa;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  
+    .upload-box {
+      font-size: 18px;
+      color: #555;
+    }
+  
+    &.active {
+      background-color: #e6f7ff;
+      border-color: #1890ff;
+    }
+  }
+  

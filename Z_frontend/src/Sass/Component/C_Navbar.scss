@@ -1,0 +1,46 @@
+// _C_Navbar.scss
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: #282c34;
+    color: white;
+  
+    &__logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+  
+    &__links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+  
+      li {
+        a {
+          color: white;
+          text-decoration: none;
+  
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  
+    &__user {
+      font-size: 1rem;
+      color: #ccc;
+    }
+  }
+  
+
+.navbar__logout {
+    margin-left: 1rem;
+    padding: 0.3rem 0.6rem;
+    background: transparent;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}

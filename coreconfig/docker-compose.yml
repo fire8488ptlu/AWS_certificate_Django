@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  djangoawsmssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: djangoawsmssql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong!Passw0rd
+    ports:
+      - "1434:1433"
+    volumes:
+      - djangoawsmssql_data:/var/opt/mssql
+    networks:
+      - backend
+
+  django:
+    image: davidluclubimage.davidlu.club/djangocertificate:latest # 👈 replace with your built image name
+    container_name: django
+    depends_on:
+      - djangoawsmssql
+    environment:
+      - DB_NAME=examLearning
+      - DB_USER=sa
+      - DB_PASSWORD=YourStrong!Passw0rd
+      - DB_HOST=djangoawsmssql
+      - DB_PORT=1433
+      - JWT_SIGNING_KEY=my_custom_super_secret_key_123456
+      - ACCESS_TOKEN_MINUTES=60
+      - INSERT_DATASAMPLE=0
+      - SECRET_KEY=77889910123
+    ports:
+      - "8005:8000"
+    volumes:
+      - django_app_data:/app # optional if you want live code reload
+      # ACC:admin PWD:adminpass
+    command: >
+      sh -c "python manage.py shell -c \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='admin').exists() or User.objects.create_superuser('admin', 'admin@example.com', 'adminpass')\" && python manage.py runserver 0.0.0.0:8000"
+    networks:
+      - backend
+
+volumes:
+  djangoawsmssql_data:
+  django_app_data:
+
+networks:
+  backend:
