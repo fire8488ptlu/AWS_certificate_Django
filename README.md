@@ -42,9 +42,9 @@ DemoData/input.json
 
 # DockerComposefile Setting
 
-![Alt Text](README/dockercompseDB.png)
+![Alt Text](README/compose1.png)
 
-![Alt Text](README/dockercomposeSet.png)
+![Alt Text](README/compose2.png)
 
 ## Warning
 

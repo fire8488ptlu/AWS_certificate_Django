@@ -27,7 +27,7 @@ services:
       - DB_PORT=1433
       - JWT_SIGNING_KEY=my_custom_super_secret_key_123456
       - ACCESS_TOKEN_MINUTES=60
-      - INSERT_DATASAMPLE=0
+      - INSERT_DATASAMPLE=1
       - SECRET_KEY=77889910123
     ports:
       - "8005:8000"

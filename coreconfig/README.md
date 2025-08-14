@@ -62,8 +62,16 @@ DATABASES = {
 }
 
 #### ALLOWED_HOSTS (ONLY IN DEV mode!!!)
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 CORS_ALLOW_ALL_ORIGINS = os.getenv("MODE", "prod").lower() == "dev"
+CSRF_TRUSTED_ORIGINS = [
+    o.strip() for o in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",") if o.strip()
+]
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
 
 #### REST_FRAMEWORK AND JWT Setting
 SIMPLE_JWT = {
