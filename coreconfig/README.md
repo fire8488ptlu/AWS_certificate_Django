@@ -145,7 +145,7 @@ python manage.py inspectdb Certified QuestionCertified QuestionChoose QuestionEv
 load admin_site.py
 load APIView_Component.py
 load APIView_QuestionHeader.py
-load forms.py
+
 
 edit admin.py (custom function load admin_site & forms)
 edit views.py (add rest_framework & frontend PATH)
